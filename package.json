@@ -82,11 +82,11 @@
     "uglifyify": "^3.0.4"
   },
   "scripts": {
-    "build": "npm run clean && npm run npm:build:css && npm run npm:babel:js && npm run docs:build-sequence",
-    "clean": "rm -rf ./lib && mkdir ./lib",
+    "build": "npm run clean && npm run npm:babel:js",
+    "clean": "del lib\\react-super-select.js",
     "docs:build-sequence": "npm run docs:clean && $(npm bin)/gulp build:docs-gulp-sequence",
     "docs:clean": "rm -rf ./src_docs/markdown/js/**/* docs_generated/*",
-    "npm:babel:js": "$(npm bin)/babel src/react-super-select.js --out-file lib/react-super-select.js",
+    "npm:babel:js": "node_modules/.bin/babel src/react-super-select.js > lib/react-super-select.js",
     "npm:build:css": "lessc ./src/react-super-select.less ./lib/react-super-select.css",
     "test": "$(npm bin)/jest"
   },
