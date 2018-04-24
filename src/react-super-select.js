@@ -670,9 +670,9 @@ class ReactSuperSelect extends React.Component {
           pagingLi = this.state.isFetchingPage ? this._getPagingLi() : null;
 
     return(
-      <div ref={(c) => {this._rssDOM.dropdownContent = c }} className="r-ss-dropdown" onKeyDown={this._handleKeyDown}>
+      <div ref={(c) => {this._rssDOM.dropdownContent = c }} className={classNames("r-ss-dropdown",this.props.mydropdown)} onKeyDown={this._handleKeyDown}>
         {searchContent}
-        <div ref={(c) => {this._rssDOM.scrollWrap = c }} className="r-ss-options-wrap" onMouseMove={mouseMoveHandler}>
+        <div ref={(c) => {this._rssDOM.scrollWrap = c }} className={classNames("r-ss-options-wrap",this.props.dropdownbox)} onMouseMove={mouseMoveHandler}>
           <ul className="r-ss-dropdown-options"
               ref={(c) => {this._rssDOM.dropdownOptionsList = c }}
               tabIndex="-1"
@@ -822,7 +822,7 @@ class ReactSuperSelect extends React.Component {
 
     return(
       <div className="r-ss-search-wrap">
-        <div className="r-ss-search-inner">
+        <div className={classNames("r-ss-search-inner", this.props.customSearchInner)}>
           <label ref={(c) => {this._rssDOM.searchInputLabel = c }} id={searchAriaIdLabel} className="r-ss-search-aria-label" htmlFor={searchAriaId}>{searchPlaceholderString}</label>
           <input ref={(c) => {this._rssDOM.searchInput = c }}
                  placeholder={searchPlaceholderString}
@@ -833,7 +833,8 @@ class ReactSuperSelect extends React.Component {
                  name={searchAriaId}
                  id={searchAriaId}
                  aria-labelledby={searchAriaIdLabel}
-                 aria-autocomplete="list" />
+                 aria-autocomplete="list"
+                 className={this.props.customInputSearch} />
           {clearSearch}
           <i className={magnifierClass}>search</i>
         </div>
